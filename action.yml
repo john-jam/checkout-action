@@ -22,7 +22,7 @@ runs:
         args: /bin/sh -c "rm -rf /github/workspace/.* || rm -rf /github/workspace/*"
 
     - name: Checkout the current repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set variables
       if: inputs.actions-repo != '' && inputs.actions-ssh-key != ''
@@ -36,7 +36,7 @@ runs:
 
     - name: Checkout the actions private repository
       if: inputs.actions-repo != '' && inputs.actions-ssh-key != ''
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       with:
         repository: ${{ steps.actions-set-vars.outputs.repo-basepath }}
         ref: ${{ steps.actions-set-vars.outputs.repo-ref }}
