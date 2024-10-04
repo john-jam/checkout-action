@@ -14,13 +14,6 @@ inputs:
 runs:
   using: composite
   steps:
-    # When mixing jobs on the host and inside containers, some folders could have root ownership and break the next builds
-    # https://github.com/actions/runner/issues/434#issuecomment-992865457
-    - name: Cleanup workspace
-      uses: docker://alpine
-      with:
-        args: /bin/sh -c "rm -rf /github/workspace/.* || rm -rf /github/workspace/*"
-
     - name: Checkout the current repository
       uses: actions/checkout@v4
 
